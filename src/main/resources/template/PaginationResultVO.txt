@@ -1,0 +1,64 @@
+import java.util.List;
+
+
+public class PaginationResultVO<T> {
+
+    private Integer pageNo;
+    private Integer pageSize;
+    private Integer totalCount;
+    private Integer pageTotal;
+    private List<T> list;
+
+    public PaginationResultVO() {
+    }
+    public PaginationResultVO(SimplePage page, List<T> list) {
+        this.pageNo = page.getPageNo();
+        this.pageSize = page.getPageSize();
+        this.totalCount = page.getTotalCount();
+        this.pageTotal = page.getTotalPage();
+        this.list = list;
+    }
+
+
+    // getter setter
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public Integer getPageTotal() {
+        return pageTotal;
+    }
+
+    public void setPageTotal(Integer pageTotal) {
+        this.pageTotal = pageTotal;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public Integer getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(Integer pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+
+}

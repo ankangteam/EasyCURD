@@ -1,0 +1,86 @@
+
+public class SimplePage {
+
+    /**
+     * 默认第一页
+     */
+    public static final int DEFAULT_PAGE_NO = 1;
+
+    /**
+     * 默认每页10条
+     */
+    public static final int DEFAULT_PAGE_SIZE = 10;
+
+    /**
+     * 当前页
+     */
+    private Integer pageNo = DEFAULT_PAGE_NO;
+
+    /**
+     * 每页大小
+     */
+    private Integer pageSize = DEFAULT_PAGE_SIZE;
+
+    /**
+     * 总记录数
+     */
+    private Integer totalCount;
+
+    public SimplePage() {
+    }
+
+    public SimplePage(int pageNo, int pageSize, int totalCount) {
+        this.pageNo = pageNo;
+        this.pageSize = pageSize;
+        this.totalCount = totalCount;
+    }
+
+    /**
+     * SQL分页起始位置
+     */
+    public int getStart() {
+        return (pageNo - 1) * pageSize;
+    }
+
+    /**
+     * 总页数
+     */
+    public int getTotalPage() {
+        if (totalCount == 0) {
+            return 0;
+        }
+        return (totalCount + pageSize - 1) / pageSize;
+    }
+
+    // ---------------- getter / setter ----------------
+
+    public Integer getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(Integer pageNo) {
+        if (pageNo < 1 ) {
+            pageNo = DEFAULT_PAGE_NO;
+        }
+        this.pageNo = pageNo;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        if (pageSize < 1) {
+            pageSize = DEFAULT_PAGE_SIZE;
+        }
+        this.pageSize = pageSize;
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
+}

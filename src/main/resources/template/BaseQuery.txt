@@ -1,0 +1,33 @@
+
+
+public class BaseQuery {
+    private SimplePage simplePage ;
+    private Integer pageNo;
+    private Integer pageSize;
+    private String orderBy;
+
+    public String getOrderBy() {
+        return orderBy;
+    }
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+    }
+    public void setSimplepage(SimplePage simplePage) {
+        this.simplePage = simplePage;
+    }
+    public SimplePage getSimplePage() {
+        return simplePage;
+    }
+    public Integer getPageNo() {
+        return pageNo == null || pageNo < 1 ? 1 : pageNo;
+    }
+    public void setPageNo(Integer pageNo) {
+        this.pageNo = pageNo;
+    }
+    public Integer getPageSize() {
+        return pageSize == null || pageSize < 1 ? 10 : pageSize;
+    }
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+}

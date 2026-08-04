@@ -1,0 +1,18 @@
+public class BusinessException extends RuntimeException {
+
+    private final Integer code;
+
+    public BusinessException(ResponseCodeEnum responseCode) {
+        super(responseCode.getMessage());
+        this.code = responseCode.getCode();
+    }
+
+    public BusinessException(ResponseCodeEnum responseCode, String message) {
+        super(message);
+        this.code = responseCode.getCode();
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+}

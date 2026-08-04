@@ -1,0 +1,39 @@
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    /**
+     * 业务异常
+     */
+    @ExceptionHandler(BusinessException.class)
+    public ResponseVO handleBusinessException(BusinessException e) {
+        return ResponseVO.fail(e.getCode(), e.getMessage());
+    }
+
+    /**
+     * 参数异常
+     */
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseVO handleIllegalArgumentException(IllegalArgumentException e) {
+        return ResponseVO.fail(
+                ResponseCodeEnum.PARAM_ERROR.getCode(),
+                e.getMessage()
+        );
+    }
+
+    /**
+     * 未知异常
+     */
+    @ExceptionHandler(Exception.class)
+    public ResponseVO handleException(Exception e) {
+        // 推荐使用日志框架
+        e.printStackTrace();
+
+        return ResponseVO.fail(
+                ResponseCodeEnum.SYSTEM_ERROR.getCode(),
+                ResponseCodeEnum.SYSTEM_ERROR.getMessage()
+        );
+    }
+}

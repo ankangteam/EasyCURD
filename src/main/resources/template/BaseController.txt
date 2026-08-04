@@ -1,0 +1,19 @@
+public abstract class BaseController {
+
+    protected ResponseVO getSuccessResponseVO() {
+        return ResponseVO.success(null);
+    }
+
+    protected ResponseVO getSuccessResponseVO(Object data) {
+        return ResponseVO.success(data);
+    }
+
+    protected ResponseVO getSuccessResponseVO(String message, Object data) {
+        return new ResponseVO(
+                ResponseCodeEnum.SUCCESS.getCode(),
+                ResponseCodeEnum.SUCCESS.getMessage(),
+                message,
+                data
+        );
+    }
+}
